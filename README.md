@@ -22,7 +22,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h3 align="center">Simple Go Api - Get start</h3>
+  <h3 align="center">Go Api with MongoDb</h3>
 </div>
 
 
