@@ -62,3 +62,40 @@ func GetById(id string) (m.User, error) {
 
 	return user, nil
 }
+
+func Update(user m.User) (bool, error) {
+
+	oid := user.ID
+
+	filter := bson.M{"_id": oid}
+
+	update := bson.M{
+		"$set": bson.M{
+			"name":       user.Name,
+			"email":      user.Email,
+			"created_at": user.CreatedAt,
+			"updated_at": user.UpdatedtAt,
+		},
+	}
+
+	_, err := collection.UpdateOne(ctx, filter, update)
+
+	if err != nil {
+		return false, err
+	}
+
+	return true, nil
+}
+
+func Delete(id string) (bool, error) {
+
+	oid, _ := primitive.ObjectIDFromHex(id)
+	filter := bson.M{"_id": oid}
+
+	_, err := collection.DeleteOne(ctx, filter)
+
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}

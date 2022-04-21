@@ -37,3 +37,26 @@ func GetById(id string) (m.User, error) {
 	}
 	return user, nil
 }
+
+func Update(user m.User) (bool, error) {
+	resp, err := user_repository.Update(user)
+
+	if err != nil {
+		return false, err
+	}
+
+	if !resp {
+		return false, nil
+	}
+
+	return true, nil
+}
+
+func Delete(id string) (bool, error) {
+	_, err := user_repository.Delete(id)
+
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}

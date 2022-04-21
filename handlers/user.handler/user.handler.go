@@ -44,3 +44,32 @@ func GetById(w http.ResponseWriter, req *http.Request) {
 
 	json.NewEncoder(w).Encode(users)
 }
+
+func Update(w http.ResponseWriter, req *http.Request) {
+	fmt.Println("Update user")
+
+	var user m.User
+	_ = json.NewDecoder(req.Body).Decode(&user)
+
+	_, err := user_service.Update(user)
+
+	if err != nil {
+		json.NewEncoder(w).Encode("Error")
+	}
+
+	json.NewEncoder(w).Encode("ok")
+}
+
+func Delete(w http.ResponseWriter, req *http.Request) {
+	fmt.Println("Delete user")
+	params := mux.Vars(req)
+	id := params["id"]
+
+	_, err := user_service.Delete(id)
+
+	if err != nil {
+		json.NewEncoder(w).Encode("Error")
+	}
+
+	json.NewEncoder(w).Encode("OK")
+}
