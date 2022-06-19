@@ -39,6 +39,18 @@
    go get github.com/gorilla/mux 
   ```
 
+2. "payload"
+
+* http://localhost:3001/add
+* {
+	"name":"Ricardo",
+	"email":"roca@gmail.com",
+	"created_at":"Wed Apr 20 2022 17:42:45 GMT-0500",
+	"updated_at":"Wed Apr 20 2022 17:42:45 GMT-0500"
+}
+* http://localhost:3001/get
+
+
 ### start
 
 1. "  go run . "    to Windows
