@@ -12,7 +12,7 @@ import (
 
 func GetConnection(collection string) *mongo.Collection {
 
-	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017"))
+	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27018"))
 
 	if err != nil {
 		fmt.Println("Error 1")
